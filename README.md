@@ -36,5 +36,5 @@ Then select the options to create specific avatars.
 
 # Screenshots
 
-The GUI.
+The GUI.\
 ![gui](https://github.com/marcobaturan/avatar-generator-GUI/assets/7045377/be017316-4bba-4030-acf7-c84e9745b26c)
