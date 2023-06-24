@@ -32,4 +32,4 @@ Then select the options to create specific avatars.
 ├── requirements.txt\
 ├── sad.png\
 ├── speak.png\
-└── README.MD\
+└── README.MD
