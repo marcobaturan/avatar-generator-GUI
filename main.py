@@ -1,6 +1,17 @@
-""" AGGUI
+#!/usr/bin/env python
+
+""" Avatar generator GUI
 
     The avatar generator GUI is a tool for the generation of avatars for facial expression and a tool for building the facial dynamics of a chatbot.
+    
+    __author__ = "Marco Baturan García"
+    __copyright__ = "None"
+    __credits__ = "None"
+    __license__ = "GPL"
+    __version__ = "1.0"
+    __maintainer__ = "Marco Baturan García"
+    __email__ = "marco.baturan@gmail.com"
+    __status__ = "Production"
     
 """
 import PySimpleGUI as psg
