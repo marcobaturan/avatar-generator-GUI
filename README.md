@@ -11,7 +11,6 @@ A simple GUI for generating simple 2D avatars.
 
 Then select the options to create specific avatars.
 
-
 ## Testing
 
 - Python 3.10.6
@@ -37,4 +36,5 @@ Then select the options to create specific avatars.
 
 # Screenshots
 
-!(GUI)[https://github.com/marcobaturan/avatar-generator-GUI/blob/main/gui.png]
+The GUI.
+![gui](https://github.com/marcobaturan/avatar-generator-GUI/assets/7045377/be017316-4bba-4030-acf7-c84e9745b26c)
