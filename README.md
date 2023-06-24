@@ -14,7 +14,7 @@ Then select the options to create specific avatars.
 
 ## Testing
 
-- Python3
+- Python 3.10.6
 - Ubuntu 22.04
 - Laptop HP 
 - Hardware:
