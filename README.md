@@ -23,6 +23,7 @@ Then select the options to create specific avatars.
   - RENOIR (renoir, LLVM 15.0.6, DRM 3.47, 5.19.0-43-generic)
 
 ## Folder project:
+
 ├── angry.png\
 ├── configuration.mem\
 ├── fear.png\
@@ -33,3 +34,7 @@ Then select the options to create specific avatars.
 ├── sad.png\
 ├── speak.png\
 └── README.MD
+
+# Screenshots
+
+!(GUI)[https://github.com/marcobaturan/avatar-generator-GUI/blob/main/gui.png]
