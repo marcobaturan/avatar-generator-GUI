@@ -4,9 +4,9 @@
 
 # Instructions
 
-$ python3 virtualenv venv
-$ pip install -r requirements.txt
-$ python main.py
+$ python3 virtualenv venv\
+$ pip install -r requirements.txt\
+$ python main.py\
 
 
   Then select the options to create specific avatars.
