@@ -1,6 +1,6 @@
 # avatar-generator-GUI
 
-  A simple GUI for generating simple 2D avatars.
+    A simple GUI for generating simple 2D avatars.
 
 # Instructions
 
@@ -9,7 +9,7 @@ $ pip install -r requirements.txt\
 $ python main.py
 
 
-  Then select the options to create specific avatars.
+    Then select the options to create specific avatars.
 
 
 ## Testing
