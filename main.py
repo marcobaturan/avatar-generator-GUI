@@ -73,7 +73,7 @@ def set_variables_configuration():
                       'SHIRT_SCOOP_NECK', 'SHIRT_V_NECK']
     graphic = ['BAT', 'BEAR', 'CUMBIA', 'DEER', 'DIAMOND', 'HOLA', 'PIZZA', 'RESIST', 'SELENA', 'SKULL',
                'SKULL_OUTLINE']
-    emotion = ['neutral','speak','happy','fear','angry','sad']
+    emotion = ['neutral','speak','happy','sad','fear','angry','disgust','surprise']
     return accessories_types, beard_styles, circle, clothing_types, colors, expressions, eye_types, eyebrow_types, facial_hair_colors, graphic, hair_colors,  skin_tones, top_types, emotion
 
 
@@ -88,12 +88,17 @@ def params_on_the_fly(values):
         :return values:
 
     """
-    graphic_expr = None
+
     # parameters on-the-fly
-    if values[0] == 'CIRCLE':
+    if values[0] is None:
         Style = pa.AvatarStyle.CIRCLE
+
     else:
-        Style = pa.AvatarStyle.TRANSPARENT
+        if values[0] == 'CIRCLE':
+            Style = pa.AvatarStyle.CIRCLE
+        else:
+            Style = pa.AvatarStyle.TRANSPARENT
+
     # SkinColor
     if values[1] == 'BLACK':
         Skin_color = pa.SkinColor.BLACK
@@ -400,27 +405,27 @@ def params_on_the_fly(values):
     else:
         print(f"Invalid clothing type: {values[11]}")
     # clothe graphic
-    if values[12] == 'BAT':
+    if values[13] == 'BAT':
         graphic_expr = pa.ClotheGraphicType.BAT
-    elif values[12] == 'BEAR':
+    elif values[13] == 'BEAR':
         graphic_expr = pa.ClotheGraphicType.BEAR
-    elif values[12] == 'CUMBIA':
+    elif values[13] == 'CUMBIA':
         graphic_expr = pa.ClotheGraphicType.CUMBIA
-    elif values[12] == 'DEER':
+    elif values[13] == 'DEER':
         graphic_expr = pa.ClotheGraphicType.DEER
-    elif values[12] == 'DIAMOND':
+    elif values[13] == 'DIAMOND':
         graphic_expr = pa.ClotheGraphicType.DIAMOND
-    elif values[12] == 'HOLA':
+    elif values[13] == 'HOLA':
         graphic_expr = pa.ClotheGraphicType.HOLA
-    elif values[12] == 'PIZZA':
+    elif values[13] == 'PIZZA':
         graphic_expr = pa.ClotheGraphicType.PIZZA
-    elif values[12] == 'RESIST':
+    elif values[13] == 'RESIST':
         graphic_expr = pa.ClotheGraphicType.RESIST
-    elif values[12] == 'SELENA':
+    elif values[13] == 'SELENA':
         graphic_expr = pa.ClotheGraphicType.SELENA
-    elif values[12] == 'SKULL':
+    elif values[13] == 'SKULL':
         graphic_expr = pa.ClotheGraphicType.SKULL
-    elif values[12] == 'SKULL_OUTLINE':
+    elif values[13] == 'SKULL_OUTLINE':
         graphic_expr = pa.ClotheGraphicType.SKULL_OUTLINE
     else:
         print(f"Invalid graphic type: {values[12]}")
@@ -452,20 +457,29 @@ def configuration():
         [psg.Text('clothing colors'), psg.Drop(values=(colors), expand_x=True)],
         [psg.Text('clothing graphic type'), psg.Drop(values=(graphic), expand_x=True)],
         [psg.Text('emotions'), psg.Drop(values=(emotion), expand_x=True)],
-        [psg.Submit(), psg.Cancel()]]
+        [psg.Submit(), psg.Exit()]]
     window = psg.Window('Configurarion', layout, font=("Helvetica", 12))
-    event, values = window.read()
-    window.close()
-    # Write and save configuration of the face.
-    with open('configuration.mem', 'wt') as file:
-        for value in range(len(values)):
-            file.write(values[value] + '\n')
-    # Parameters on the fly
-    Facial_hair_color, Facial_hair_type, Hair_color, Skin_color, Style, Top, accessories_expr, clothe_expr, eye_expr, eyebrow_expr, face_expression, hatcolor, graphic_expr = params_on_the_fly(
-        values)
 
-    face_generator(Facial_hair_color, Facial_hair_type, Hair_color, Skin_color, Style, Top, accessories_expr,
-                   clothe_expr, eye_expr, eyebrow_expr, face_expression, graphic, hatcolor,name=values[14])
+    while True:  # The Event Loop
+        event, values = window.read()
+
+        # Parameters on the fly
+        Facial_hair_color, Facial_hair_type, Hair_color, Skin_color, Style, Top, accessories_expr, clothe_expr, eye_expr, eyebrow_expr, face_expression, hatcolor, graphic_expr = params_on_the_fly(
+            values)
+
+        face_generator(Facial_hair_color, Facial_hair_type, Hair_color, Skin_color, Style, Top, accessories_expr,
+                       clothe_expr, eye_expr, eyebrow_expr, face_expression, graphic, hatcolor, name=values[14])
+
+        with open('configuration.mem', 'wt') as file:
+            for value in range(len(values)):
+                file.write(values[value] + '\n')
+        # print(event, values)
+        if event == psg.WIN_CLOSED or event == 'Exit':
+            break
+            # Write and save configuration of the face.
+    window.close()
+
+
 
 
 configuration()
