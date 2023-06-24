@@ -1,13 +1,18 @@
+""" AGGUI
+
+    The avatar generator GUI is a tool for the generation of avatars for facial expression and a tool for building the facial dynamics of a chatbot.
+    
+"""
 import PySimpleGUI as psg
 import py_avataaars as pa
 
 def face_generator(Facial_hair_color, Facial_hair_type, Hair_color, Skin_color, Style, Top, accessories_expr,
                    clothe_expr, eye_expr, eyebrow_expr, face_expression, graphic, hatcolor, name):
-    """face generator.
+    """ Face generator.
 
-        Received parameters to generate a new face or modify an existent face.
-        In the first case It's will be used in configuration module.
-        In the second case It'll be use in face module for modify eye and mouth expression.
+        Received parameters to generate a new face or modify an existing face.
+        In the first case, It's will be used in the configuration module.
+        In the second case, It'll be used in the face module to modify eye and mouth expressions.
 
     """
     avatar = pa.PyAvataaar(
@@ -30,12 +35,12 @@ def face_generator(Facial_hair_color, Facial_hair_type, Hair_color, Skin_color, 
     avatar.render_png_file(f'{name}.png')
 
 def set_variables_configuration():
-    """Set variables configuration.
+    """ Set variables configuration.
 
-        I put the set of variables for initial configuration and on the fly emotional reconfiguration.
+        I put the set of variables for initial configuration and on-the-fly emotional reconfiguration.
         Because it's too many variables, it's necessary to put in the module functions for the best
         refactor.
-        :return variables:
+        : return variables:
 
     """
     # variables
@@ -78,14 +83,14 @@ def set_variables_configuration():
 
 
 def params_on_the_fly(values):
-    """Parameters on-the-fly.
+    """ Parameters on-the-fly.
 
-        This function manage the parameters from values get from configuration and
+        This function manages the parameters from values get from configuration and
         output speak of the chatbot. And detect the I/O stream for sentimental
-        analysis for generate mouth movement and emotional expression.
+        analysis to generate mouth movement and emotional expression.
 
-        :param values:
-        :return values:
+        : param values:
+        : return values:
 
     """
 
@@ -434,12 +439,18 @@ def params_on_the_fly(values):
 
 
 def configuration():
+  """ Configuration.
+  
+      The function shows GUI for configuring the avatar generator and labelling de facial expression.
+      : param none :
+      : return png :
+  """
     # set variables for face generation
     accessories_types, beard_styles, circle, clothing_types, colors, expressions, eye_types, eyebrow_types, facial_hair_colors, graphic, hair_colors, skin_tones, top_types, emotion = set_variables_configuration()
     # Format window.
     psg.theme('GreenTan')
     psg.set_options(text_justification='right')
-    # nested structured list for the format of configuration window.
+    # nested structured list for the format of the configuration window.
     layout = [
         [psg.Text('Select params and generate the face', font=('Helvetica', 16))],
         [psg.Text('Style window'), psg.Drop(values=(circle), expand_x=True)],
@@ -476,7 +487,7 @@ def configuration():
         # print(event, values)
         if event == psg.WIN_CLOSED or event == 'Exit':
             break
-            # Write and save configuration of the face.
+            # Write and save the configuration of the face.
     window.close()
 
 
