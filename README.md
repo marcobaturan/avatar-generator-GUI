@@ -1,6 +1,7 @@
 # avatar-generator-GUI
 
-A simple GUI for generating simple 2D avatars.
+A simple GUI for generating simple 2D avatars. In the main folder, you have the examples of the main
+facial expressions in 2D vector pictures; speak, neutral, happy, sad, fear, angry, surprise and disgust.
 
 # Instructions
 
@@ -23,16 +24,21 @@ Then select the options to create specific avatars.
 
 ## Folder project:
 
+├── LICENSE\
+├── README.md\
 ├── angry.png\
 ├── configuration.mem\
+├── disgust.png\
 ├── fear.png\
+├── gui.png\
 ├── happy.png\
 ├── main.py\
 ├── neutral.png\
 ├── requirements.txt\
 ├── sad.png\
 ├── speak.png\
-└── README.MD
+└──surprise.png
+
 
 # Screenshots
 
